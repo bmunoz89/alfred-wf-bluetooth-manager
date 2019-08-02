@@ -836,6 +836,8 @@ brew install bluetoothconnector</string>
 			<integer>130</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>1.0.0</string>
 	<key>webaddress</key>
