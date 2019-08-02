@@ -1,0 +1,13 @@
+{
+    "code-runner.executorMap": {
+        "python": "${env:WORKON_HOME}/awf-bluetooth-manager-CJbjKrw7/bin/python -u"
+    },
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "autopep8",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": false,
+    "python.linting.pep8Enabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "${env:WORKON_HOME}/awf-bluetooth-manager-CJbjKrw7/bin/python",
+}
