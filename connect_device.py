@@ -6,7 +6,7 @@ import json
 import os
 import sys
 
-from workflow import ICON_INFO, Workflow3
+from workflow import Workflow3
 from workflow.util import run_command
 
 log = None
@@ -39,13 +39,11 @@ def main(wf):
 if __name__ == '__main__':
     wf = Workflow3(update_settings={
         'github_slug': 'bmunoz89/alfred-wf-bluetooth-manager',
-        'frequency': 7,
+        'frequency': 1,
     })
     log = wf.logger
     if wf.update_available:
-        wf.add_item(
-            'New version available',
-            'Action this item to install the update',
-            autocomplete='workflow:update',
-            icon=ICON_INFO)
+        log.debug('Update available')
+        wf.start_update()
+
     sys.exit(wf.run(main))
