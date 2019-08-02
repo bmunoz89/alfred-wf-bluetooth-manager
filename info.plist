@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>234DD9A0-343B-4E65-A8FF-2A73C2E3A93F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>304CF204-4BD3-46D5-8D9E-9496568C0D6A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>304CF204-4BD3-46D5-8D9E-9496568C0D6A</key>
 		<array>
 			<dict>
@@ -48,7 +61,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>6C9DD29C-2192-44BF-BAD7-97E8DBBF0B1C</string>
+				<string>234DD9A0-343B-4E65-A8FF-2A73C2E3A93F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -63,7 +76,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>6C9DD29C-2192-44BF-BAD7-97E8DBBF0B1C</string>
+				<string>234DD9A0-343B-4E65-A8FF-2A73C2E3A93F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -76,19 +89,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>6C9DD29C-2192-44BF-BAD7-97E8DBBF0B1C</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>304CF204-4BD3-46D5-8D9E-9496568C0D6A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -295,7 +295,7 @@
 				<key>subtext</key>
 				<string>Connect to the default device</string>
 				<key>text</key>
-				<string>Bluetooth: Connect</string>
+				<string>Bluetooth: Connect {var:bluetooth_name}</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -363,6 +363,29 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
+				<string>/usr/bin/python notification.py "Set a device first" ""</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>234DD9A0-343B-4E65-A8FF-2A73C2E3A93F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
 				<string>/usr/bin/python set_device.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
@@ -377,27 +400,6 @@
 			<string>6D4B112E-0625-4530-8FA6-903C4B3ED640</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Set a device first</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>6C9DD29C-2192-44BF-BAD7-97E8DBBF0B1C</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -427,29 +429,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>15661F94-438A-48A0-A9F1-CA2B2F109330</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python disconnect_device.py</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -486,6 +465,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python disconnect_device.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -493,7 +495,7 @@
 				<key>subtext</key>
 				<string>Disconnect the default device</string>
 				<key>text</key>
-				<string>Bluetooth: Disconnect</string>
+				<string>Bluetooth: Disconnect {var:bluetooth_name}</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -718,6 +720,10 @@ brew install bluetoothconnector</string>
 	<dict>
 		<key>1173EEBA-C96E-4715-92CE-B41155874C2D</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>Disconnect device</string>
 			<key>xpos</key>
 			<integer>430</integer>
 			<key>ypos</key>
@@ -725,13 +731,28 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>15661F94-438A-48A0-A9F1-CA2B2F109330</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
 			<integer>55</integer>
 			<key>ypos</key>
 			<integer>245</integer>
 		</dict>
+		<key>234DD9A0-343B-4E65-A8FF-2A73C2E3A93F</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>note</key>
+			<string>Notification</string>
+			<key>xpos</key>
+			<integer>340</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
 		<key>304CF204-4BD3-46D5-8D9E-9496568C0D6A</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
 			<integer>505</integer>
 			<key>ypos</key>
@@ -739,10 +760,14 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>Disconnect device</string>
 			<key>xpos</key>
-			<integer>340</integer>
+			<integer>345</integer>
 			<key>ypos</key>
-			<integer>315</integer>
+			<integer>350</integer>
 		</dict>
 		<key>397BF832-8264-4C96-9B47-9B393542B2CE</key>
 		<dict>
@@ -760,20 +785,21 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>52A6064E-4AAF-43FA-A620-3A1C76B5C73F</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Connect device</string>
 			<key>xpos</key>
 			<integer>430</integer>
 			<key>ypos</key>
 			<integer>530</integer>
 		</dict>
-		<key>6C9DD29C-2192-44BF-BAD7-97E8DBBF0B1C</key>
-		<dict>
-			<key>xpos</key>
-			<integer>340</integer>
-			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
 		<key>6D4B112E-0625-4530-8FA6-903C4B3ED640</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>note</key>
+			<string>Set device</string>
 			<key>xpos</key>
 			<integer>670</integer>
 			<key>ypos</key>
@@ -781,6 +807,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>7C6CBB77-2F20-4038-A196-9E98FA400550</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
@@ -788,6 +816,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>9817FA96-BC76-4973-9CC0-1EBF98325B64</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
 			<integer>60</integer>
 			<key>ypos</key>
@@ -795,6 +825,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>998B29C3-C110-488E-9F03-7B36E4EA1508</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
 			<integer>50</integer>
 			<key>ypos</key>
@@ -802,13 +834,19 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>9E539BDD-BFC8-4A6F-9EBA-22AD466BE84B</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>note</key>
+			<string>Connect device</string>
 			<key>xpos</key>
-			<integer>335</integer>
+			<integer>340</integer>
 			<key>ypos</key>
-			<integer>85</integer>
+			<integer>55</integer>
 		</dict>
 		<key>D713054A-A57B-4171-8CC0-DFE4DE4F173C</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
 			<integer>60</integer>
 			<key>ypos</key>
@@ -816,6 +854,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>DD6CBA70-E875-425B-98E0-A31BBFAC566B</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
@@ -823,6 +863,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>E67AA2BE-7915-48F9-9D73-64ED8C26E440</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
 			<key>xpos</key>
 			<integer>50</integer>
 			<key>ypos</key>
@@ -830,6 +872,8 @@ brew install bluetoothconnector</string>
 		</dict>
 		<key>F27FA8AB-6308-4E0F-932D-B9D9E76C3FC6</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>7</integer>
 			<key>xpos</key>
 			<integer>60</integer>
 			<key>ypos</key>

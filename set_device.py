@@ -17,6 +17,7 @@ def main(wf):
     log.debug(device)
 
     set_config('bluetooth_mac_address', device['mac_address'])
+    set_config('bluetooth_name', device['name'])
     notify('Device stored', device['name'])
 
     wf.send_feedback()
