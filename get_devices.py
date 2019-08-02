@@ -19,6 +19,7 @@ MAC_ADDRESS_LINE_REGEX = re.compile(
 
 log = None
 
+
 def get_bluetooth_devices():
     bluetooth_output = subprocess.check_output(['/usr/local/bin/BluetoothConnector'])
     output_devices = MAC_ADDRESS_LINE_REGEX.findall(bluetooth_output)

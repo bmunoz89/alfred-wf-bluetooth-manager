@@ -8,10 +8,9 @@ import subprocess
 import sys
 
 from workflow import ICON_INFO, Workflow3
-from workflow.notify import notify
-from workflow.util import set_config
 
 log = None
+
 
 def connect_bluetooth_devices(mac_address):
     command = [
@@ -21,9 +20,7 @@ def connect_bluetooth_devices(mac_address):
         '--notify',
     ]
     log.debug(' '.join(command))
-    bluetooth_output = subprocess.check_output(command)
-    # log.debug(bluetooth_output)
-    # notify('Bluetooth connect', bluetooth_output)
+    subprocess.check_output(command)
 
 
 def main(wf):
