@@ -4,10 +4,10 @@ from __future__ import print_function
 
 import json
 import os
-import subprocess
 import sys
 
 from workflow import ICON_INFO, Workflow3
+from workflow.util import run_command
 
 log = None
 
@@ -20,7 +20,7 @@ def connect_bluetooth_devices(mac_address):
         '--notify',
     ]
     log.debug(' '.join(command))
-    subprocess.check_output(command)
+    run_command(command)
 
 
 def main(wf):
