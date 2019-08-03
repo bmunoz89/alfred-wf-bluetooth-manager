@@ -27,5 +27,9 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 
 Besides that, you can add shortcuts into the preferences 👌🏽
 
+# 📙 Todo
+
+- [ ] Find a better bluetooth command/package/library to use or make a refactor of the [current one][bluetooth connector] that allows us to surpass our present management
 
 [last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
+[bluetooth connector]: https://github.com/lapfelix/BluetoothConnector
