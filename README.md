@@ -7,6 +7,12 @@ brew install bluetoothconnector
 
 Now [download][last release link] ⏬ the last release and open it 😎. That's all!!
 
+# 📸 Screenshots
+
+![](./screenshots/ss_bset.jpg)
+![](./screenshots/ss_bc.jpg)
+![](./screenshots/ss_bcs.jpg)
+
 # 🔑 Keywords
 
 - `bset`: Set the default device
