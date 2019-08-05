@@ -2,11 +2,13 @@
 ![GitHub Releases](https://img.shields.io/github/downloads/bmunoz89/alfred-wf-bluetooth-manager/latest/total?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/bmunoz89/alfred-wf-bluetooth-manager?style=for-the-badge)
 
+#### 🚨 Supports Alfred 3 & 4 🚨
+
 # 💻 Installation 👾
 
 Run this command on a terminal:
 ```bash
-brew install bluetoothconnector
+brew install blueutil
 ```
 
 Now [download][last release link] ⏬ the last release and open it 😎. That's all!!
@@ -16,6 +18,8 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 ![](./screenshots/ss_bset.jpg)
 ![](./screenshots/ss_bc.jpg)
 ![](./screenshots/ss_bcs.jpg)
+![](./screenshots/ss_bds.jpg)
+![](./screenshots/ss_bm.jpg)
 
 # 🔑 Keywords
 
@@ -24,8 +28,10 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 - `bd`: Disconnect the default device
 - `bcs`: Select the device you would like to connect to
 - `bds`: Select the device you would like to disconnect to
+- `bm`: Allows to turn bluetooth on and off, and the same
+    for updates of the workflow
 
 Besides that, you can add shortcuts into the preferences 👌🏽
 
-
 [last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
+[bluetooth connector]: https://github.com/lapfelix/BluetoothConnector
