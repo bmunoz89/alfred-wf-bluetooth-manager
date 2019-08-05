@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.alfredapp.bluetooth_manager</string>
+	<string>com.alfredapp.bluetooth_connect</string>
 	<key>category</key>
-	<string>Productivity</string>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>15661F94-438A-48A0-A9F1-CA2B2F109330</key>
@@ -26,6 +26,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>304CF204-4BD3-46D5-8D9E-9496568C0D6A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2FA44222-3180-4A2C-AD86-B9F71B3F1C56</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1173EEBA-C96E-4715-92CE-B41155874C2D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -88,20 +101,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>7114F3D1-5AB9-4F16-8374-3F514C589CED</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C52C3C67-8C13-497D-A95D-472AAA150188</string>
+				<string>B981194A-0225-4BF7-864D-9DB48B914B91</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -114,7 +114,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1173EEBA-C96E-4715-92CE-B41155874C2D</string>
+				<string>2FA44222-3180-4A2C-AD86-B9F71B3F1C56</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -151,6 +151,19 @@
 		</array>
 		<key>9E539BDD-BFC8-4A6F-9EBA-22AD466BE84B</key>
 		<array/>
+		<key>B981194A-0225-4BF7-864D-9DB48B914B91</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>34D08C59-E8FD-4D75-BC49-75E58A2EAEDB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D713054A-A57B-4171-8CC0-DFE4DE4F173C</key>
 		<array>
 			<dict>
@@ -229,8 +242,6 @@
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -253,13 +264,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py connect</string>
+				<string>/usr/bin/python connect_device.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -275,7 +286,7 @@
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:default_device}</string>
+						<string>{var:bluetooth_mac_address}</string>
 						<key>matchcasesensitive</key>
 						<false/>
 						<key>matchmode</key>
@@ -308,7 +319,7 @@
 				<key>subtext</key>
 				<string>Connect to the default device</string>
 				<key>text</key>
-				<string>Bluetooth: Connect {var:default_device_name}</string>
+				<string>Bluetooth: Connect {var:bluetooth_name}</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -347,7 +358,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/bin/python get_devices.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -376,13 +387,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py notification "Set a device first"</string>
+				<string>/usr/bin/python notification.py "Set a device first" ""</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -399,13 +410,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py set_device "{query}"</string>
+				<string>/usr/bin/python set_device.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -429,8 +440,6 @@
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -452,7 +461,7 @@
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:default_device}</string>
+						<string>{var:bluetooth_mac_address}</string>
 						<key>matchcasesensitive</key>
 						<false/>
 						<key>matchmode</key>
@@ -483,13 +492,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py disconnect</string>
+				<string>/usr/bin/python disconnect_device.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -508,7 +517,7 @@
 				<key>subtext</key>
 				<string>Disconnect the default device</string>
 				<key>text</key>
-				<string>Bluetooth: Disconnect {var:default_device_name}</string>
+				<string>Bluetooth: Disconnect {var:bluetooth_name}</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -516,6 +525,23 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>9817FA96-BC76-4973-9CC0-1EBF98325B64</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>Query: {query}, Allvars: {allvars}</string>
+				<key>cleardebuggertext</key>
+				<true/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>B981194A-0225-4BF7-864D-9DB48B914B91</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -547,7 +573,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/bin/python get_devices.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -576,13 +602,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py connect "{query}"</string>
+				<string>/usr/bin/python connect_device.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -606,8 +632,6 @@
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -619,6 +643,29 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>998B29C3-C110-488E-9F03-7B36E4EA1508</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python disconnect_device.py "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1173EEBA-C96E-4715-92CE-B41155874C2D</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -650,7 +697,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/bin/python get_devices.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -686,8 +733,6 @@
 				<integer>0</integer>
 				<key>hotmod</key>
 				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -705,102 +750,24 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python bluetooth.py disconnect "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>argument</key>
+				<string>Query: {query}, Allvars: {allvars}</string>
+				<key>cleardebuggertext</key>
+				<true/>
+				<key>processoutputs</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
-			<string>1173EEBA-C96E-4715-92CE-B41155874C2D</string>
+			<string>2FA44222-3180-4A2C-AD86-B9F71B3F1C56</string>
 			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/usr/bin/python bluetooth.py manager "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C52C3C67-8C13-497D-A95D-472AAA150188</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>bm</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Checking bluetooth status</string>
-				<key>script</key>
-				<string>/usr/bin/python bluetooth.py manager</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Bluetooth manager</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>7114F3D1-5AB9-4F16-8374-3F514C589CED</string>
-			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string>First run this command on a terminal:
-brew install blueutil</string>
+brew install bluetoothconnector</string>
 	<key>uidata</key>
 	<dict>
 		<key>1173EEBA-C96E-4715-92CE-B41155874C2D</key>
@@ -810,9 +777,9 @@ brew install blueutil</string>
 			<key>note</key>
 			<string>Disconnect device</string>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>540</integer>
 			<key>ypos</key>
-			<integer>665</integer>
+			<integer>660</integer>
 		</dict>
 		<key>15661F94-438A-48A0-A9F1-CA2B2F109330</key>
 		<dict>
@@ -833,6 +800,13 @@ brew install blueutil</string>
 			<integer>340</integer>
 			<key>ypos</key>
 			<integer>200</integer>
+		</dict>
+		<key>2FA44222-3180-4A2C-AD86-B9F71B3F1C56</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>695</integer>
 		</dict>
 		<key>304CF204-4BD3-46D5-8D9E-9496568C0D6A</key>
 		<dict>
@@ -890,15 +864,6 @@ brew install blueutil</string>
 			<key>ypos</key>
 			<integer>200</integer>
 		</dict>
-		<key>7114F3D1-5AB9-4F16-8374-3F514C589CED</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>7</integer>
-			<key>xpos</key>
-			<integer>225</integer>
-			<key>ypos</key>
-			<integer>820</integer>
-		</dict>
 		<key>7C6CBB77-2F20-4038-A196-9E98FA400550</key>
 		<dict>
 			<key>colorindex</key>
@@ -922,7 +887,7 @@ brew install blueutil</string>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>55</integer>
+			<integer>50</integer>
 			<key>ypos</key>
 			<integer>530</integer>
 		</dict>
@@ -937,16 +902,12 @@ brew install blueutil</string>
 			<key>ypos</key>
 			<integer>55</integer>
 		</dict>
-		<key>C52C3C67-8C13-497D-A95D-472AAA150188</key>
+		<key>B981194A-0225-4BF7-864D-9DB48B914B91</key>
 		<dict>
-			<key>colorindex</key>
-			<integer>1</integer>
-			<key>note</key>
-			<string>Execute manager action</string>
 			<key>xpos</key>
-			<integer>430</integer>
+			<integer>275</integer>
 			<key>ypos</key>
-			<integer>820</integer>
+			<integer>450</integer>
 		</dict>
 		<key>D713054A-A57B-4171-8CC0-DFE4DE4F173C</key>
 		<dict>
@@ -971,7 +932,7 @@ brew install blueutil</string>
 			<key>colorindex</key>
 			<integer>9</integer>
 			<key>xpos</key>
-			<integer>55</integer>
+			<integer>50</integer>
 			<key>ypos</key>
 			<integer>665</integer>
 		</dict>
@@ -985,9 +946,21 @@ brew install blueutil</string>
 			<integer>130</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>bluetooth_mac_address</key>
+		<string></string>
+		<key>bluetooth_name</key>
+		<string></string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>bluetooth_mac_address</string>
+		<string>bluetooth_name</string>
+	</array>
 	<key>version</key>
-	<string>2.0.0</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
-	<string>https://github.com/bmunoz89/alfred-wf-bluetooth-manager</string>
+	<string></string>
 </dict>
 </plist>
