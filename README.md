@@ -34,4 +34,3 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 Besides that, you can add shortcuts into the preferences 👌🏽
 
 [last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
-[bluetooth connector]: https://github.com/lapfelix/BluetoothConnector
