@@ -18,6 +18,8 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 ![](./screenshots/ss_bset.jpg)
 ![](./screenshots/ss_bc.jpg)
 ![](./screenshots/ss_bcs.jpg)
+![](./screenshots/ss_bds.jpg)
+![](./screenshots/ss_bm.jpg)
 
 # 🔑 Keywords
 
@@ -26,6 +28,8 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 - `bd`: Disconnect the default device
 - `bcs`: Select the device you would like to connect to
 - `bds`: Select the device you would like to disconnect to
+- `bm`: Allows to turn bluetooth on and off, and the same
+    for updates of the workflow
 
 Besides that, you can add shortcuts into the preferences 👌🏽
 
