@@ -45,7 +45,7 @@ class BluetoothManager:
 
     def _run_command(self, command):
         log.debug('Command: "%s"' % ' '.join(command))
-        output = run_command(command).strip().decode('utf-8')
+        output = self._wf.decode(run_command(command)).strip()
         log.debug('Command result: "%s"' % output)
         return output
 
