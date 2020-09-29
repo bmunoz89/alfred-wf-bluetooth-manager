@@ -30,6 +30,7 @@ log = None
 
 class BluetoothManager:
 
+    __BREW_COMMAND_PATH = '/usr/local/bin/brew'
     __BLUETOOTH_COMMAND_PATH = '/usr/local/bin/blueutil'
 
     def __init__(self, wf):
@@ -41,7 +42,41 @@ class BluetoothManager:
         self._action = self._args[0]
         self._action_args = self._args[1:]
 
+        self._set_bluetooth_command_path()
+
         self.main()
+
+    def _set_bluetooth_command_path(self):
+        if os.path.exists(self.__BLUETOOTH_COMMAND_PATH):
+            log.debug('blueutil command path exists')
+            return
+
+        bluetooth_command_path = self._wf.stored_data('bluetooth_command_path')
+        if bluetooth_command_path is not None:
+            log.debug(
+                'blueutil command path stored in "%s" was restored from stored data' %
+                bluetooth_command_path)
+            self.__BLUETOOTH_COMMAND_PATH = bluetooth_command_path
+            return
+
+        if not os.path.exists(self.__BREW_COMMAND_PATH):
+            log.error('brew command path not found')
+            return
+
+        bluetooth_command_path = self._run_command([
+            self.__BREW_COMMAND_PATH,
+            '--prefix',
+        ])
+
+        if bluetooth_command_path is None:
+            log.error('blueutil command path not found')
+            return
+
+        bluetooth_command_path += os.path.join(bluetooth_command_path, '/bin/blueutil')
+        if os.path.exists(bluetooth_command_path):
+            log.debug('blueutil command path stored in "%s"' % bluetooth_command_path)
+            self._wf.store_data('bluetooth_command_path', bluetooth_command_path)
+            self.__BLUETOOTH_COMMAND_PATH = bluetooth_command_path
 
     def _run_command(self, command):
         log.debug('Command: "%s"' % ' '.join(command))
