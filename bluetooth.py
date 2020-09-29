@@ -143,6 +143,11 @@ class BluetoothManager:
                 subtitle='Force to check if there is a new update available',
                 arg='check_update',
                 valid=True, )
+            self._wf.add_item(
+                title='Clear data',
+                subtitle='Delete stored data related with the "blueutil" command path',
+                arg='clear_data',
+                valid=True, )
         else:
             selected_option_method = getattr(self, 'manager_%s' % selected_option, None)
             if selected_option_method is not None:
@@ -288,6 +293,9 @@ class BluetoothManager:
     def manager_check_update(self):
         notify('Checking update', 'Performing it in background')
         self._wf.check_update(True)
+
+    def manager_clear_data(self):
+        self._wf.clear_data()
 
 
 if __name__ == '__main__':
