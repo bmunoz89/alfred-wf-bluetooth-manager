@@ -138,6 +138,11 @@ class BluetoothManager:
                     subtitle='Is performed every %d days' % UPDATE_FREQUENCY,
                     arg='activate_update',
                     valid=True, )
+            self._wf.add_item(
+                title='Check update',
+                subtitle='Force to check if there is a new update available',
+                arg='check_update',
+                valid=True, )
         else:
             selected_option_method = getattr(self, 'manager_%s' % selected_option, None)
             if selected_option_method is not None:
@@ -279,6 +284,10 @@ class BluetoothManager:
     def manager_activate_update(self):
         set_config('can_update', 'true')
         notify('Update activated')
+
+    def manager_check_update(self):
+        notify('Checking update', 'Performing it in background')
+        self._wf.check_update(True)
 
 
 if __name__ == '__main__':
