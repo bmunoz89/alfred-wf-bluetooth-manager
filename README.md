@@ -1,5 +1,6 @@
 ![GitHub release](https://img.shields.io/github/release/bmunoz89/alfred-wf-bluetooth-manager?style=for-the-badge)
 ![GitHub Releases](https://img.shields.io/github/downloads/bmunoz89/alfred-wf-bluetooth-manager/latest/total?style=for-the-badge)
+![GitHub All Releases](https://img.shields.io/github/downloads/bmunoz89/alfred-wf-bluetooth-manager/total?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/bmunoz89/alfred-wf-bluetooth-manager?style=for-the-badge)
 
 #### 🚨 Supports Alfred 3 & 4 🚨
