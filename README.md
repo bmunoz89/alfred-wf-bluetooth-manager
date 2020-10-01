@@ -29,8 +29,11 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
 - `bd`: Disconnect the default device
 - `bcs`: Select the device you would like to connect to
 - `bds`: Select the device you would like to disconnect to
-- `bm`: Allows to turn bluetooth on and off, and the same
-    for updates of the workflow
+- `bm`:
+    - Bluetooth on and off
+    - Enable and disabled check of updates
+    - Manually check for an update
+    - Clear data: Allowing to clear the blueutil path saved(just in case 🤷🏽‍♂️)
 
 Besides that, you can add shortcuts into the preferences 👌🏽
 
