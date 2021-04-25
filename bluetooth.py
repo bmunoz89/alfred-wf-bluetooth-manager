@@ -7,7 +7,7 @@ import sys
 import time
 from subprocess import CalledProcessError
 
-from workflow import ICON_INFO, Workflow3
+from workflow import ICON_INFO, ICON_ERROR, Workflow3
 from workflow.notify import notify
 from workflow.util import run_command, set_config
 
@@ -31,7 +31,10 @@ log = None
 class BluetoothManager:
 
     __BREW_COMMAND_PATH = '/usr/local/bin/brew'
+    __BREW_ENVIRONMENT_KEY = 'brew_command_path'
+
     __BLUETOOTH_COMMAND_PATH = '/usr/local/bin/blueutil'
+    __BLUETOOTH_ENVIRONMENT_KEY = 'bluetooth_command_path'
 
     def __init__(self, wf):
         self._wf = wf
@@ -42,41 +45,66 @@ class BluetoothManager:
         self._action = self._args[0]
         self._action_args = self._args[1:]
 
-        self._set_bluetooth_command_path()
+        try:
+            self._set_commands_path()
 
-        self.main()
+            self.main()
+        except Exception as error:
+            message = 'Something went wrong'
+            if isinstance(error, OSError) and error.errno == 2:
+                message = 'Change your blueutil or brew path'
 
-    def _set_bluetooth_command_path(self):
-        if os.path.exists(self.__BLUETOOTH_COMMAND_PATH):
-            log.debug('blueutil command path exists')
-            return
+            log.error(message, exc_info=error)
+            self._wf.add_item(
+                title=message,
+                subtitle='Press enter to go to the help page',
+                icon=ICON_ERROR,
+                arg='workflow:help',
+                valid=True)
+            self._wf.send_feedback()
 
-        bluetooth_command_path = self._wf.stored_data('bluetooth_command_path')
-        if bluetooth_command_path is not None:
-            log.debug(
-                'blueutil command path stored in "%s" was restored from stored data' %
-                bluetooth_command_path)
+    def _set_commands_path(self):
+        bluetooth_command_path = os.getenv(self.__BLUETOOTH_ENVIRONMENT_KEY)
+
+        if bluetooth_command_path is None:
+            set_config(self.__BLUETOOTH_ENVIRONMENT_KEY, self.__BLUETOOTH_COMMAND_PATH)
+            bluetooth_command_path = self.__BLUETOOTH_COMMAND_PATH
+
+        if os.path.exists(bluetooth_command_path):
             self.__BLUETOOTH_COMMAND_PATH = bluetooth_command_path
-            return
+            log.debug('blueutil command path exists')
+            return True
+
+        brew_command_path = os.getenv(self.__BREW_ENVIRONMENT_KEY)
+
+        if brew_command_path is None:
+            set_config(self.__BREW_ENVIRONMENT_KEY, self.__BREW_COMMAND_PATH)
+            brew_command_path = self.__BREW_COMMAND_PATH
 
         if not os.path.exists(self.__BREW_COMMAND_PATH):
-            log.error('brew command path not found')
-            return
+            log.error('brew command path not found: %s' % brew_command_path)
+            return False
 
-        bluetooth_command_path = self._run_command([
+        self.__BREW_COMMAND_PATH = brew_command_path
+
+        brew_prefix_path = self._run_command([
             self.__BREW_COMMAND_PATH,
             '--prefix',
         ])
 
-        if bluetooth_command_path is None:
-            log.error('blueutil command path not found')
-            return
+        if brew_prefix_path is None:
+            log.error('brew prefix path not found')
+            return False
 
-        bluetooth_command_path += os.path.join(bluetooth_command_path, '/bin/blueutil')
+        bluetooth_command_path = os.path.join(brew_prefix_path, 'bin/blueutil')
         if os.path.exists(bluetooth_command_path):
             log.debug('blueutil command path stored in "%s"' % bluetooth_command_path)
-            self._wf.store_data('bluetooth_command_path', bluetooth_command_path)
+            set_config(self.__BLUETOOTH_ENVIRONMENT_KEY, bluetooth_command_path)
             self.__BLUETOOTH_COMMAND_PATH = bluetooth_command_path
+            return True
+
+        log.error('blueutil command path not found: %s' % bluetooth_command_path)
+        return False
 
     def _run_command(self, command):
         log.debug('Command: "%s"' % ' '.join(command))
@@ -110,8 +138,6 @@ class BluetoothManager:
             self._wf.send_feedback()
         else:
             action_method(*self._action_args)
-
-        return 0
 
     def action_manager(self, is_on, selected_option=None):
         if selected_option is None:
@@ -153,7 +179,7 @@ class BluetoothManager:
             if selected_option_method is not None:
                 selected_option_method()
             else:
-                raise Exception('"bm" action not')
+                raise Exception('"bm" action not found')
         self._wf.send_feedback()
 
     def _parse_device(self, raw_device):
@@ -299,10 +325,13 @@ class BluetoothManager:
 
 
 if __name__ == '__main__':
-    wf = Workflow3(update_settings={
-        'github_slug': GITHUB_SLUG,
-        'frequency': UPDATE_FREQUENCY,
-    })
+    wf = Workflow3(
+        update_settings={
+            'github_slug': GITHUB_SLUG,
+            'frequency': UPDATE_FREQUENCY,
+        },
+        help_url='https://github.com/' + GITHUB_SLUG + '#-help',
+    )
     log = wf.logger
 
     can_update = os.getenv('can_update', 'true') == 'true'
