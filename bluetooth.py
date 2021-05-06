@@ -37,7 +37,7 @@ class BluetoothManager:
     __BLUETOOTH_ENVIRONMENT_KEY = 'bluetooth_command_path'
 
     def __init__(self, wf):
-        self._wf = wf
+        self._wf = wf  # type: Workflow3
         log.debug('Args: %s' % wf.args)
         self._args = wf.args
         if len(self._args) < 1:
@@ -242,27 +242,39 @@ class BluetoothManager:
             device = os.getenv('default_device')
         device_json = json.loads(device)
         if not self._device_is_connected(device_json['mac_address']):
-            try:
-                self._run_command([
-                    self.__BLUETOOTH_COMMAND_PATH,
-                    '--connect',
-                    device_json['mac_address'],
-                ])
-            except CalledProcessError as exc:
-                log.error(exc)
-                notify('"%s" was not possible to connect' % device_json['name'])
-            else:
-                # TODO: find a better way to wait until the device is connected
-                time.sleep(1)
-                if self._device_is_connected(device_json['mac_address']):
-                    notify('"%s" connected' % device_json['name'])
-                else:
-                    notify(
-                        '"%s" not connected' % device_json['name'],
-                        'Make sure the device is on')
+            notify('Connecting "%s"' % device_json['name'])
+            self._connect(device_json)
         else:
             notify('"%s" is already connected' % device_json['name'])
         self._wf.send_feedback()
+
+    def _connect(self, device_json, attempt=0, max_attempts=5):
+        log.debug('Trying to connect device, attempt %d' % attempt)
+        try:
+            self._run_command([
+                self.__BLUETOOTH_COMMAND_PATH,
+                '--connect',
+                device_json['mac_address'],
+            ])
+        except CalledProcessError as exc:
+            log.error(exc)
+            notify(
+                '"%s" was not possible to connect' % device_json['name'],
+                'Check the workflow logs')
+            self._wf.send_feedback()
+        else:
+            time.sleep(1)
+            if self._device_is_connected(device_json['mac_address']):
+                notify('"%s" connected' % device_json['name'])
+                self._wf.send_feedback()
+            elif attempt == max_attempts:
+                log.error('Number of attempts reached ztrying to connect the device')
+                notify(
+                    '"%s" not connected' % device_json['name'],
+                    'Make sure the device is on')
+                self._wf.send_feedback()
+            else:
+                self._connect(device_json, attempt + 1, max_attempts)
 
     def action_disconnect(self, device=None):
         if device is None:
