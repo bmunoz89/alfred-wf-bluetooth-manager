@@ -3,7 +3,13 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/bmunoz89/alfred-wf-bluetooth-manager/total?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/bmunoz89/alfred-wf-bluetooth-manager?style=for-the-badge)
 
-#### 🚨 Supports Alfred 3 & 4 🚨
+# 🚨 Supports Alfred 4 🚨
+
+> Workflows created or edited in any version of Alfred are fundamentally incompatible with earlier versions, even if no new features are used.
+
+https://www.deanishe.net/alfred-workflow/guide/update.html#id3
+
+I am using alfred 4, therefore I cannot make it compatible with alfred 3
 
 # 💻 Installation 👾
 
