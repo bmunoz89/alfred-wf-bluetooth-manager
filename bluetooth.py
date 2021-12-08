@@ -4,7 +4,6 @@ import json
 import os
 import re
 import sys
-import time
 from subprocess import CalledProcessError
 
 from workflow import ICON_INFO, ICON_ERROR, Workflow3
@@ -248,12 +247,13 @@ class BluetoothManager:
             notify('"%s" is already connected' % device_json['name'])
         self._wf.send_feedback()
 
-    def _connect(self, device_json, attempt=0, max_attempts=5):
-        log.debug('Trying to connect device, attempt %d' % attempt)
+    def _connect(self, device_json):
         try:
             self._run_command([
                 self.__BLUETOOTH_COMMAND_PATH,
                 '--connect',
+                device_json['mac_address'],
+                '--wait-connect',
                 device_json['mac_address'],
             ])
         except CalledProcessError as exc:
@@ -261,20 +261,13 @@ class BluetoothManager:
             notify(
                 '"%s" was not possible to connect' % device_json['name'],
                 'Check the workflow logs')
-            self._wf.send_feedback()
         else:
-            time.sleep(1)
             if self._device_is_connected(device_json['mac_address']):
                 notify('"%s" connected' % device_json['name'])
-                self._wf.send_feedback()
-            elif attempt == max_attempts:
-                log.error('Number of attempts reached ztrying to connect the device')
+            else:
                 notify(
                     '"%s" not connected' % device_json['name'],
                     'Make sure the device is on')
-                self._wf.send_feedback()
-            else:
-                self._connect(device_json, attempt + 1, max_attempts)
 
     def action_disconnect(self, device=None):
         if device is None:
@@ -296,7 +289,7 @@ class BluetoothManager:
                 if self._device_is_connected(device_json['mac_address']):
                     notify(
                         '"%s" disconnected' % device_json['name'],
-                        'Something goes wrong')
+                        'Something went wrong')
                 else:
                     notify('"%s" disconnected' % device_json['name'])
         else:
