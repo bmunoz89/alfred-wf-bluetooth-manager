@@ -286,6 +286,8 @@ class BluetoothManager:
                     self.__BLUETOOTH_COMMAND_PATH,
                     '--disconnect',
                     device_json['mac_address'],
+                    '--wait-disconnect',
+                    device_json['mac_address'],
                 ])
             except CalledProcessError as exc:
                 log.error(exc)
