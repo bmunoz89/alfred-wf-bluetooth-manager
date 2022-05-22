@@ -44,8 +44,7 @@ To check if all the previous commands were successful, run this command:
 
 ## Download the release according to your OS version
 
-macOS Monterey: [download][monterey last release link]
-previous macOS: [download][last release link]
+[macOS Monterey][monterey and above last release link] or [previous macOS][previous macos last release link]
 
 # 📸 Screenshots
 
@@ -105,5 +104,5 @@ Copy both results and follow the steps in the next point.
 
 Easy peasy! 😋
 
-[monterey last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
-[last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/download/2.4.1/Bluetooth.manager.alfredworkflow
+[monterey and above last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
+[previous macos last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/download/2.4.1/Bluetooth.manager.alfredworkflow
