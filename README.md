@@ -43,6 +43,8 @@ Now [download][last release link] ⏬ the last release and open it 😎. That's 
     - Manually check for an update
     - Clear data: Allowing to clear the blueutil path saved(just in case 🤷🏽‍♂️)
 
+Default device = Is the device used in `bc` and `bd` commands without having to select one like in `bcs` or `bds`.
+
 # 🆘 Help
 
 ## - What should I do if a get the message "Change your blueutil or brew path"?
