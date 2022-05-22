@@ -20,7 +20,32 @@ And then run this command on a terminal:
 brew install blueutil
 ```
 
-Now [download][last release link] ⏬ the last release and open it 😎. That's all!!
+## Python 2 and macOS Monterrey
+
+https://www.alfredapp.com/help/kb/python-2-monterey/
+
+This is the recommended solution by Alfred and the solution implemented from release 3.0.0 and above, therefore I don't recommend to upgrade your workflow if you don't have macOS Monterrey.
+
+```bash
+export PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}"
+eval "$(brew shellenv)"
+brew install pyenv
+pyenv install 2.7.18
+ln -s "${HOME}/.pyenv/versions/2.7.18/bin/python2.7" "${HOMEBREW_PREFIX}/bin/python"
+```
+
+Which should lead to have linked the python bin to this path `/usr/local/bin/python`.
+To check if all the previous commands were successful, run this command:
+
+```bash
+/usr/local/bin/python --version
+# Which should print this "Python 2.7.18"
+```
+
+## Download the release according to your OS version
+
+macOS Monterey: [download][monterey last release link]
+previous macOS: [download][last release link]
 
 # 📸 Screenshots
 
@@ -80,4 +105,5 @@ Copy both results and follow the steps in the next point.
 
 Easy peasy! 😋
 
-[last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
+[monterey last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/latest/download/Bluetooth.manager.alfredworkflow
+[last release link]: https://github.com/bmunoz89/alfred-wf-bluetooth-manager/releases/download/2.4.1/Bluetooth.manager.alfredworkflow

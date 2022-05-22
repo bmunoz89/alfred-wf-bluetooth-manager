@@ -253,7 +253,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py connect</string>
+				<string>/usr/local/bin/python bluetooth.py connect</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -347,7 +347,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/local/bin/python bluetooth.py list_devices</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -376,7 +376,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py notification "Set a device first"</string>
+				<string>/usr/local/bin/python bluetooth.py notification "Set a device first"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -399,7 +399,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py set_device "{query}"</string>
+				<string>/usr/local/bin/python bluetooth.py set_device "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -483,7 +483,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py disconnect</string>
+				<string>/usr/local/bin/python bluetooth.py disconnect</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -547,7 +547,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/local/bin/python bluetooth.py list_devices</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -576,7 +576,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py connect "{query}"</string>
+				<string>/usr/local/bin/python bluetooth.py connect "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -650,7 +650,7 @@
 				<key>runningsubtext</key>
 				<string>Loading devices</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py list_devices</string>
+				<string>/usr/local/bin/python bluetooth.py list_devices</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -710,7 +710,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py disconnect "{query}"</string>
+				<string>/usr/local/bin/python bluetooth.py disconnect "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -733,7 +733,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py manager "{query}"</string>
+				<string>/usr/local/bin/python bluetooth.py manager "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -776,7 +776,7 @@
 				<key>runningsubtext</key>
 				<string>Checking bluetooth status</string>
 				<key>script</key>
-				<string>/usr/bin/python bluetooth.py manager</string>
+				<string>/usr/local/bin/python bluetooth.py manager</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>

@@ -2330,7 +2330,7 @@ class Workflow(object):
             update_script = os.path.join(os.path.dirname(__file__),
                                          b'update.py')
 
-            cmd = ['/usr/bin/python', update_script, 'check', repo, version]
+            cmd = ['/usr/local/bin/python', update_script, 'check', repo, version]
 
             if self.prereleases:
                 cmd.append('--prereleases')
@@ -2369,7 +2369,7 @@ class Workflow(object):
         update_script = os.path.join(os.path.dirname(__file__),
                                      b'update.py')
 
-        cmd = ['/usr/bin/python', update_script, 'install', repo, version]
+        cmd = ['/usr/local/bin/python', update_script, 'install', repo, version]
 
         if self.prereleases:
             cmd.append('--prereleases')
@@ -2718,7 +2718,7 @@ class Workflow(object):
             return text
         text = ''.join([ASCII_REPLACEMENTS.get(c, c) for c in text])
         return unicode(unicodedata.normalize('NFKD',
-                       text).encode('ascii', 'ignore'))
+                                             text).encode('ascii', 'ignore'))
 
     def dumbify_punctuation(self, text):
         """Convert non-ASCII punctuation to closest ASCII equivalent.

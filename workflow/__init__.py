@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/bin/python
 # encoding: utf-8
 #
 # Copyright (c) 2014 Dean Jackson <deanishe@deanishe.net>

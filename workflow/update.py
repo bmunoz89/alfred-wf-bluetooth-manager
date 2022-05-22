@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/bin/python
 # encoding: utf-8
 #
 # Copyright (c) 2014 Fabio Niephaus <fabio.niephaus@gmail.com>,
@@ -263,7 +263,7 @@ class Version(object):
             # Build info
             idx = suffix.find('+')
             if idx > -1:
-                self.build = suffix[idx+1:]
+                self.build = suffix[idx + 1:]
                 suffix = suffix[:idx]
             if suffix:
                 if not suffix.startswith('-'):
