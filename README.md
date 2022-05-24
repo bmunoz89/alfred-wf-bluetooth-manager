@@ -24,7 +24,7 @@ brew install blueutil
 
 https://www.alfredapp.com/help/kb/python-2-monterey/
 
-This is the recommended solution by Alfred and the solution implemented from release 3.0.0 and above, therefore I don't recommend to upgrade your workflow if you don't have macOS Monterrey.
+This is the recommended solution by Alfred and the solution implemented from release 3.0.0 and above, therefore I don't recommend to upgrade your workflow if you don't have macOS Monterrey, bu if you installed version equal or major to 3 you will have to this anyway.
 
 ```bash
 export PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}"
